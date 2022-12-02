@@ -20,7 +20,7 @@
                             </span>
                         </button> -->
                         <a href="/" class="web-logo nav-logo">
-                            <img src="{% static 'web/images/logo/my store.png' %}"
+                            <img src="{% static 'web/images/logo/my-store.png' %}"
                                 class="img-fluid blur-up lazyload" alt="">
                         </a>
 
@@ -111,7 +111,7 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li class="right-side">
+                                <!-- <li class="right-side">
                                     <a href="{% url 'user:contact_us' %}" class="delivery-login-box">
                                         <div class="delivery-icon">
                                             <i data-feather="phone-call"></i>
@@ -121,7 +121,7 @@
                                             <h5>+91 888 104 2340</h5>
                                         </div>
                                     </a>
-                                </li>
+                                </li> -->
                                 <li class="right-side">
                                     <a href="{%url 'user:viewwishlist' %}" class="btn p-0 position-relative header-wishlist">
                                         <i data-feather="heart"></i>
@@ -209,11 +209,11 @@
                                                 <a href="{% url 'user:shop_category' subcategory.id %}"><h5>{{subcategory.subcategory}}</h5></a>
                                             </div>
                                             <ul>
-                                                {% for products in subcategory.get_products %}
+                                                <!-- {% for products in subcategory.get_products %}
                                                 <li>
                                                     <a href="{% url 'user:product' products.id %}">{{products.product}}</a>
                                                 </li>
-                                                {% endfor %}
+                                                {% endfor %} -->
                                             </ul>
                                         {% endfor %}
                                     </div>

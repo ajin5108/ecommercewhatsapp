@@ -9,14 +9,15 @@ def main_context(request):
     categories = Category.objects.all()
     subcategories = SubCategory.objects.all()
     products = Product.objects.all()
-    if Customer.user == request.user:
+    
+    if request.user.is_anonymous:
        
         return {
             "headerflash": headerflash,
             "categories": categories,
             "subcategories": subcategories,
             "products": products,
-            "status":1
+            "status":0
             }
     else:
        
@@ -25,6 +26,6 @@ def main_context(request):
             "categories": categories,
             "subcategories": subcategories,
             "products": products,
-            "status":0
+            "status":1
             }
 

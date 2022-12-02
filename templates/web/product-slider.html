@@ -9,35 +9,45 @@
         <ul>
             <li class="active">
                 <a href="/">
-                    <i class="iconly-Home icli"></i>
+                    <span class="material-symbols-outlined">
+                        home
+                        </span>
                     <span>Home</span>
                 </a>
             </li>
 
             <li class="mobile-category">
                 <a href="javascript:void(0)">
-                    <i class="iconly-Category icli js-link"></i>
+                    <span class="material-symbols-outlined">
+                        category
+                        </span>
                     <span>Category</span>
                 </a>
             </li>
 
             <li>
                 <a href="{% url 'user:search' %}" class="search-box">
-                    <i class="iconly-Search icli"></i>
+                    <span class="material-symbols-outlined">
+                        search
+                        </span>
                     <span>Search</span>
                 </a>
             </li>
 
             <li>
-                <a href="{% url 'user:viewwishlist' %}" >
-                    <i class="iconly-Heart icli"></i>
+                <a href="{%url 'user:viewwishlist' %}">
+                    <span class="material-symbols-outlined">
+                        favorite
+                        </span>
                     <span>My Wish</span>
                 </a>
             </li>
 
             <li>
                 <a href="{% url 'user:viewcart' %}">
-                    <i class="iconly-Bag-2 icli fly-cate"></i>
+                    <span class="material-symbols-outlined">
+                        shopping_cart
+                        </span>
                     <span>Cart</span>
                 </a>
             </li>
@@ -53,7 +63,7 @@
                     <div class="breadscrumb-contain">
                         <h2>{{products.product}}</h2>
                         <nav>
-                            <ol class="breadcrumb mb-0">
+                            <!-- <ol class="breadcrumb mb-0">
                                 <li class="breadcrumb-item">
                                     <a href="/">
                                         <i class="fa fa-2x fa-solid fa-house"></i>
@@ -61,7 +71,7 @@
                                 </li>
 
                                 <li class="breadcrumb-item active">{{products.product}}</li>
-                            </ol>
+                            </ol> -->
                         </nav>
                     </div>
                 </div>
@@ -77,29 +87,36 @@
                 <div class="col-12">
                     <div class="slider-3-product product-wrapper">    
                         <div>
+                            
                             <div class="product-slider-image">
                                 <img src="{{products.image.url}}"
                                     alt="{{products.product}}" class="img-fluid blur-up lazyload"> 
                             </div>
                         </div>
+                        {% if products.sub_image1 %}
                         <div>
                             <div class="product-slider-image">
                                 <img src="{{products.sub_image1.url}}"
                                     alt="{{products.product}}" class="img-fluid blur-up lazyload"> 
                             </div>
                         </div>
+                        {% endif %}
+                        {% if products.sub_image2 %}
                         <div>
                             <div class="product-slider-image">
                                 <img src="{{products.sub_image2.url}}"
                                     alt="{{products.product}}" class="img-fluid blur-up lazyload"> 
                             </div>
                         </div>
+                        {% endif %}
+                        {% if products.sub_image3 %}
                         <div>
                             <div class="product-slider-image">
                                 <img src="{{products.sub_image3.url}}"
                                     alt="{{products.product}}" class="img-fluid blur-up lazyload"> 
                             </div>
                         </div>
+                        {% endif %}
                         {% comment %} <div>
                             <div class="product-slider-image">
                                 <img src="https://themes.pixelstrap.com/fastkart/assets/images/product/category/2.jpg"
@@ -128,10 +145,10 @@
                             {% endif %}
                         <div class="col-12 wow fadeInUp">
                             <div class="right-box-contain">
-                                <h6 class="offer-top">30% Off</h6>
+                                <h6 class="offer-top">{{percentage|floadformat:0}} %OFF</h6>
                                 <h2 class="name">{{products.product}}</h2>
                                 <div class="price-rating">
-                                    <h3 class="theme-color price">Rs {{products.price}}<del class="text-content">Rs {{products.offer_price}}</del> 
+                                    <h3 class="theme-color price">Rs {{products.offer_price}}<del class="text-content">Rs {{products.price}}</del> 
                                         {% comment %} <span class="offer theme-color">(8% off)</span></h3> {% endcomment %}
                                     <div class="product-rating custom-rate">
                                         <ul class="rating">
@@ -183,7 +200,7 @@
                                     </ul>
                                 </div> -->
 
-                                <div class="time deal-timer product-deal-timer mx-md-0 mx-auto" id="clockdiv-1"
+                                <!-- <div class="time deal-timer product-deal-timer mx-md-0 mx-auto" id="clockdiv-1"
                                     data-hours="1" data-minutes="2" data-seconds="3">
                                     <div class="product-title">
                                         <h4>Hurry up! Sales Ends In</h4>
@@ -222,7 +239,7 @@
                                             </div>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> -->
 
                                 <div class="note-box product-packege">
                                     {% comment %} <div class="cart_qty qty-box product-qty">
@@ -257,14 +274,14 @@
 
                                 <div class="pickup-box">
                                     <div class="product-title">
-                                        <h4>Store Information</h4>
+                                        <h4>Discription</h4>
                                     </div>
 
                                     <div class="pickup-detail">
                                         <h4 class="text-content">{{products.description}}</h4>
                                     </div>
 
-                                    <div class="product-info">
+                                    <!-- <div class="product-info">
                                         <ul class="product-info-list product-info-list-3">
                                             <li>Type : <a href="javascript:void(0)">{{products.subcategory}}</a></li>
                                             {% comment %} <li>SKU : <a href="javascript:void(0)">SDFVW65467</a></li>
@@ -273,7 +290,7 @@
                                             <li>Tags : <a href="javascript:void(0)">Cake,</a> <a
                                                     href="javascript:void(0)">Backery</a></li> {% endcomment %}
                                         </ul>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 {% comment %} <div class="paymnet-option">
@@ -325,17 +342,17 @@
                                             aria-selected="false">Additional info</button>
                                     </li>
 
-                                    <li class="nav-item" role="presentation">
+                                    <!-- <li class="nav-item" role="presentation">
                                         <button class="nav-link" id="care-tab" data-bs-toggle="tab"
                                             data-bs-target="#care" type="button" role="tab" aria-controls="care"
                                             aria-selected="false">Care Instuctions</button>
-                                    </li>
+                                    </li> -->
 
-                                    <li class="nav-item" role="presentation">
+                                    <!-- <li class="nav-item" role="presentation">
                                         <button class="nav-link" id="review-tab" data-bs-toggle="tab"
                                             data-bs-target="#review" type="button" role="tab" aria-controls="review"
                                             aria-selected="false">Review</button>
-                                    </li>
+                                    </li> -->
                                 </ul>
 
                                 <div class="tab-content custom-tab" id="myTabContent">
@@ -353,7 +370,7 @@
                                                     jelly beans candy canes marshmallow gingerbread pie.</p>
                                             </div> {% endcomment %}
 
-                                            <div class="nav-desh">
+                                            <!-- <div class="nav-desh">
                                                 <div class="desh-title">
                                                     <h5>About:</h5>
                                                 </div>
@@ -369,7 +386,7 @@
                                                     massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada
                                                     proin libero nunc consequat interdum varius sit amet mattis
                                                     vulputate enim nulla aliquet porttitor lacus luctus accumsan.</p>
-                                            </div>
+                                            </div> -->
 
                                             <div class="banner-contain nav-desh">
                                                 <img src="{% static 'web/images_new/Banner5-01.jpg' %}"
@@ -381,7 +398,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="nav-desh">
+                                            <!-- <div class="nav-desh">
                                                 <div class="desh-title">
                                                     <h5>From The Manufacturer:</h5>
                                                 </div>
@@ -402,7 +419,7 @@
                                                     chocolate. Ice cream cookie dragée cake sweet roll sweet roll.Lemon
                                                     drops cookie muffin carrot cake chocolate marzipan gingerbread
                                                     topping chocolate bar. Soufflé tiramisu pastry sweet dessert.</p>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
 
@@ -825,21 +842,21 @@
                             <div class="product-box-3 wow fadeInUp">
                                 <div class="product-header">
                                     <div class="product-image">
-                                        <a href="product-left-2.html">
+                                        <a href="{% url 'user:product' related.id %}">
                                             <img src="{{related.image.url}}"
                                                 class="img-fluid blur-up lazyload" alt="">
                                         </a>
 
                                         <ul class="product-option">
                                             <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                <a href="{% url 'user:product' related.id %}" data-bs-toggle="modal"
                                                     data-bs-target="#view">
                                                     <i data-feather="eye"></i>
                                                 </a>
                                             </li>
 
                                             <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                                <a href="wishlist.html">
+                                                <a href="{% url 'user:addtowishlist' related.id %}">
                                                     <i data-feather="heart"></i>
                                                 </a>
                                             </li>

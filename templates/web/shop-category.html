@@ -9,35 +9,45 @@
         <ul>
             <li class="active">
                 <a href="/">
-                    <i class="iconly-Home icli"></i>
+                    <span class="material-symbols-outlined">
+                        home
+                        </span>
                     <span>Home</span>
                 </a>
             </li>
 
             <li class="mobile-category">
                 <a href="javascript:void(0)">
-                    <i class="iconly-Category icli js-link"></i>
+                    <span class="material-symbols-outlined">
+                        category
+                        </span>
                     <span>Category</span>
                 </a>
             </li>
 
             <li>
                 <a href="{% url 'user:search' %}" class="search-box">
-                    <i class="iconly-Search icli"></i>
+                    <span class="material-symbols-outlined">
+                        search
+                        </span>
                     <span>Search</span>
                 </a>
             </li>
 
             <li>
-                <a href="{% url 'user:viewwishlist' %}">
-                    <i class="iconly-Heart icli"></i>
+                <a href="{%url 'user:viewwishlist' %}">
+                    <span class="material-symbols-outlined">
+                        favorite
+                        </span>
                     <span>My Wish</span>
                 </a>
             </li>
 
             <li>
                 <a href="{% url 'user:viewcart' %}">
-                    <i class="iconly-Bag-2 icli fly-cate"></i>
+                    <span class="material-symbols-outlined">
+                        shopping_cart
+                        </span>
                     <span>Cart</span>
                 </a>
             </li>
@@ -53,14 +63,7 @@
                     <div class="breadscrumb-contain">
                         <h2>Shop</h2>
                         <nav>
-                            <ol class="breadcrumb mb-0">
-                                <li class="breadcrumb-item">
-                                    <a href="/">
-                                        <i class="fa fa-2x fa-solid fa-house"></i>
-                                    </a>
-                                </li>
-                                <li class="breadcrumb-item active" aria-current="page">Shop</li>
-                            </ol>
+                          
                         </nav>
                     </div>
                 </div>
@@ -839,11 +842,7 @@
 
                 <div class="col-custome-12">
                     <div class="show-button">
-                        {% comment %} <div class="filter-button-group mt-0">
-                            <div class="filter-button d-inline-block d-lg-none">
-                                <a><i class="fa-solid fa-filter"></i> Filter Menu</a>
-                            </div>
-                        </div> {% endcomment %}
+                     
 
                         <div class="top-filter-menu">
                             <div class="category-dropdown">
@@ -911,11 +910,71 @@
                     </div>
 
                     <div
-                        class="row g-sm-4 g-3 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-2 row-cols-md-3 row-cols-2 product-list-section">
+                        class="row g-sm-4 g-3 product-list-section mt-3">
                         
                         {% for sub in subcategory %}
                         {% for product in sub.get_products %}
-                        <div>
+                        
+                        <div class="col-lg-2 col-6 px-0">                                       
+                            <div class="product-box" style="border-right:0px  border:solid 1px;border: solid 1px;/* border-block-color: grey; */border-color: #3636489c;">
+                                <div class="product-image">
+                                    <a href={% url 'user:product' product.id %}>
+                                        <img src="{{product.image.url}}"
+                                                class="img-fluid blur-up lazyload" alt="">
+                                    </a>
+                                    <ul class="product-option">
+                                        <li data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="View">
+                                            <a href={% url 'user:product' product.id %}>
+                                                <i data-feather="eye"></i>
+                                            </a>
+                                        </li>
+                                        <li data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Wishlist">
+                                            <a href="{% url 'user:addtowishlist' product.id %}">
+                                                <i data-feather="heart"></i>
+                                            </a>
+                                            </li>
+                                    </ul>
+                                </div>
+                                <div class="product-detail">
+                                    <a href={% url 'user:product' product.id %}>
+                                                <h6 class="name " style="min-height: 0px; max-height: none; height: 22px; text-align: -webkit-center;">{{product.product}}</h6>
+                                    </a>
+                                    <h5 class="sold text-content">
+                                            <span class="theme-color price">Rs {{product.offer_price}}</span>
+                                                <del>{{product.price}}</del>
+                                    </h5>
+                                    <div class="product-rating mt-sm-2 mt-1">
+                                            <ul class="rating">
+                                                <li>
+                                                    <i data-feather="star" class="fill"></i>
+                                                </li>
+                                                <li>
+                                                    <i data-feather="star" class="fill"></i>
+                                                </li>
+                                                <li>
+                                                    <i data-feather="star" class="fill"></i>
+                                                </li>
+                                                <li>
+                                                    <i data-feather="star" class="fill"></i>
+                                                </li>
+                                                <li>
+                                                    <i data-feather="star"></i>
+                                                </li>
+                                            </ul>
+
+                                            <!-- <h6 class="theme-color">In Stock</h6> -->
+                                    </div>
+                                    <div class="add-to-cart-box">
+                                        <a href="{% url 'user:addtocart' product.id %}">
+                                            <button class="btn btn-add-cart">Add To Cart</button>
+                                        </a>                                      
+                                    </div>
+                                </div>
+                            </div>                                        
+                        </div>
+                        <!-- <div>
                             <div class="product-box-3 h-100 wow fadeInUp">
                                 <div class="product-header">
                                     <div class="product-image">
@@ -982,11 +1041,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         {% endfor %}
                         {% endfor %}
                        {% comment %} {% else %}
-                        {% for product in subcategory.get_products %}
+                        {% for product in subcategory.get_products %}                        
                         <div>
                             <div class="product-box-3 h-100 wow fadeInUp">
                                 <div class="product-header">
@@ -1071,11 +1130,7 @@
                                                 </a>
                                             </li>
 
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                                <a href="compare.html">
-                                                    <i data-feather="refresh-cw"></i>
-                                                </a>
-                                            </li>
+                                           
 
                                             <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
                                                 <a href="wishlist.html" class="notifi-wishlist">

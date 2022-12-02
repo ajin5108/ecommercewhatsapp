@@ -1,5 +1,5 @@
 .theme-color-1 {
-    --theme-color: #d99f46;
+    --theme-color: #343849!important;
     --theme-color-rgb: 217, 159, 70
 }
 
@@ -14,9 +14,9 @@
 }
 
 :root {
-    --theme-color: #0da487;
+    --theme-color: #353748;
     --theme-color-rgb: 13, 164, 135;
-    --theme-color1: #0e947a;
+    --theme-color1: #353748;
     --theme-color1-rgb: 14, 148, 122;
     --theme-color2: linear-gradient(90.56deg, var(--theme-color1) 8.46%, var(--theme-color) 62.97%)
 }
@@ -787,9 +787,9 @@
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     position: relative;
-    background: #ff6b6b;
-    background: -webkit-gradient(linear, left top, right top, from(#ff6b6b), to(#ff4f4f));
-    background: linear-gradient(90deg, #ff6b6b 0%, #ff4f4f 100%);
+    background: #353647;
+    background: -webkit-gradient(linear, left top, right top, from(#353647), to(#353647));
+    background: linear-gradient(90deg, #353647 0%, #353647 100%);
     border: none;
     z-index: 0
 }
@@ -808,9 +808,9 @@
     left: 0;
     z-index: -1;
     border-radius: 5px;
-    background: #ff4f4f;
-    background: -webkit-gradient(linear, left top, right top, from(#ff4f4f), to(#ff6b6b));
-    background: linear-gradient(90deg, #ff4f4f 0%, #ff6b6b 100%);
+    background: #353647;
+    background: -webkit-gradient(linear, left top, right top, from(#353647), to(#353647));
+    background: linear-gradient(90deg, #353647 0%, #353647 100%);
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease
 }
@@ -4067,7 +4067,7 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    background-color: #ff4f4f;
+    background-color: #353648;
     color: #fff;
     padding: 12px 11px;
     border-radius: 5px
@@ -4438,6 +4438,7 @@ section,
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    margin-left: 30px;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center
@@ -7850,7 +7851,7 @@ header .top-nav .navbar-top .middle-box .search-box .input-group .form-control:f
 }
 
 header .top-nav .navbar-top .middle-box .search-box .input-group button {
-    background-color: #ffa53b;
+    background-color: #363748;
     color: #fff;
     padding: 14px 20px;
     border-radius: 5px;
@@ -15481,6 +15482,7 @@ header .offcanvas-backdrop {
 .product-box .sold {
     font-weight: 600;
     margin-top: 3px;
+    text-align: -webkit-center !important;
     line-height: 21px;
     font-size: calc(14px + (15 - 14) * ((100vw - 320px) / (1920 - 320)))
 }
@@ -25180,7 +25182,8 @@ table:not(:last-child):last-child>* {
         margin-top: 10px;
         -webkit-box-pack: center;
         -ms-flex-pack: center;
-        justify-content: center
+        margin-left: -30px;
+        justify-content: center;
     }
 }
 

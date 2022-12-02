@@ -146,9 +146,11 @@ def index(request):
 def product(request, id):
     products = Product.objects.get(id=id)
     sub = products.subcategory
+    percentage=((products.price-products.offer_price)/products.price)*100
     context = {
         "products": products,
-        "subcategory": sub
+        "subcategory": sub,
+        "percentage": percentage
     }
     return render(request, "web/product-slider.html", context)
 
@@ -156,6 +158,7 @@ def product(request, id):
 
 def shop(request,id):
     category = Category.objects.get(id=id)
+    
     products = Product.objects.filter(subcategory__category = category)
     
     context = {
@@ -337,6 +340,7 @@ def viewcart(request):
 
 @csrf_exempt
 def whatsappFun(request):
+    
         messagestring = ''
         grandtotal=0
         customer = Customer.objects.get(user=request.user)
@@ -344,8 +348,17 @@ def whatsappFun(request):
         grandtotal = AddToCart.objects.filter(user=customer).aggregate(Sum('total'))
         gtotal = grandtotal['total__sum']
         data = []
+        # adminnumber= adminnumber
+        if request.user is not None:
+            print(request.user,"#"*10)
+            number_obj = AdminNumber.objects.all().last()
+            number = number_obj.phone_number
+        else :
+            number = 0
+             
+        
         try:
-            messagestring = 'https://wa.me/+918075268424?text=Table Name :'+"Items"+\
+            messagestring = 'https://wa.me/+91'+ number +'?text=Table Name :'+"Items"+\
                     "%0a------Order Details------"
             print(messagestring)
             for i in cart_obj:
@@ -360,8 +373,8 @@ def whatsappFun(request):
                 # grandtotal+=int(cart['quantity']) * int(cart['product_price'])   
             for i in data:
                 messagestring +="%0aProduct-Name:"+str(i['name'])+"%0aQuantity:"+str(i['quantity'])+"%0aUnit-Price:"+str(i['price'])+"%0aTotal :"+str(i['sub_total'])+"%0a-----------------------------"
-                messagestring+="%0a-----------------------------"
-            messagestring+="%0a-----------------------------\
+                
+            messagestring+="%0a-----------------------------%0a\
             Grand Total :"+str(gtotal)+"%0a-----------------------------"
             # data = {
             #     "link":messagestring,
